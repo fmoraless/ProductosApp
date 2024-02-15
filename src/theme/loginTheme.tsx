@@ -47,4 +47,5 @@ export const loginStyles = StyleSheet.create({
     alignItems: 'flex-end',
     marginTop: 10,
   },
+  keyboardContainer: {flex: 1},
 });
