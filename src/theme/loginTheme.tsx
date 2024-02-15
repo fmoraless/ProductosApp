@@ -44,8 +44,18 @@ export const loginStyles = StyleSheet.create({
     color: 'white',
   },
   newUserContainer: {
-    alignItems: 'flex-end',
+    alignItems: 'center',
     marginTop: 10,
   },
-  keyboardContainer: {flex: 1},
+  keyboardContainer: {flex: 1, backgroundColor: '#5856D6'},
+  buttonReturn: {
+    position: 'absolute',
+    top: 50,
+    left: 20,
+    borderWidth: 1,
+    borderColor: 'white',
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    borderRadius: 100,
+  },
 });
