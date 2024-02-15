@@ -7,6 +7,7 @@ module.exports = {
         root: ['./src'],
         extensions: ['.ios.js', '.android.js', '.js', '.ts', '.tsx', '.json'],
         alias: {
+          '@src': './src',
           '@components': './src/components',
           '@hooks': './src/hooks',
         },
