@@ -40,12 +40,21 @@ export const AuthProvider = ({children}: any) => {
       });
     } catch (error) {
       console.log(error.response.data.message);
+      dispatch({
+        type: 'addError',
+        payload: error.response.data.message || 'Información incorrecta.',
+      });
     }
   };
 
   const signUp = () => {};
   const logOut = () => {};
-  const removeError = () => {};
+
+  const removeError = () => {
+    dispatch({
+      type: 'removeError',
+    });
+  };
 
   return (
     <AuthContext.Provider
