@@ -1,4 +1,10 @@
-import {LoginData, LoginResponse, User} from '@src/interfaces/appInterfaces';
+import {
+  LoginData,
+  LoginResponse,
+  RegisterData,
+  RegisterResponse,
+  User,
+} from '@src/interfaces/appInterfaces';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, {createContext, useEffect, useReducer} from 'react';
 import {AuthState, authReducer} from './authReducer';
@@ -10,7 +16,7 @@ type AuthContextProps = {
   user: User | null;
   status: 'checking' | 'authenticated' | 'not-authenticated';
   signIn: (loginData: LoginData) => void;
-  signUp: () => void;
+  signUp: (registerData: RegisterData) => void;
   logOut: () => void;
   removeError: () => void;
 };
@@ -74,7 +80,30 @@ export const AuthProvider = ({children}: any) => {
     }
   };
 
-  const signUp = () => {};
+  const signUp = async ({email, name, password}: RegisterData) => {
+    try {
+      const {data} = await ProdApi.post<RegisterResponse>('/auth/signup', {
+        name,
+        email,
+        password,
+      });
+
+      dispatch({
+        type: 'signUp',
+        payload: {
+          token: data.authToken,
+          user: data.user,
+        },
+      });
+      await AsyncStorage.setItem('token', data.authToken);
+      await AsyncStorage.setItem('user', JSON.stringify(data.user));
+    } catch (error) {
+      dispatch({
+        type: 'addError',
+        payload: error.response.data.message || 'Información incorrecta.',
+      });
+    }
+  };
 
   const logOut = async () => {
     await AsyncStorage.removeItem('token');
