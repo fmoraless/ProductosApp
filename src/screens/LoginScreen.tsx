@@ -22,8 +22,8 @@ export const LoginScreen = ({navigation}: Props) => {
   const {signIn, errorMessage, removeError} = useContext(AuthContext);
 
   const {email, password, onChange} = useForm({
-    email: '',
-    password: '',
+    email: 'fcomorales.sanchez@gmail.com',
+    password: '123456',
   });
 
   useEffect(() => {
