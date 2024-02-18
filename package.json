@@ -12,6 +12,7 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@react-native-async-storage/async-storage": "^1.22.0",
     "@react-native-masked-view/masked-view": "^0.3.1",
     "@react-navigation/native": "^6.1.10",
     "@react-navigation/stack": "^6.3.21",
